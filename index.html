@@ -8,28 +8,32 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
     <style type="text/css">
         #bgm_box {
-            background-image: url("img/player_bg.png");
-            background-position: 288px 10px;
-            background-repeat: no-repeat;
-            width: 332px;
-            height: 110px;
             position: fixed;
-            left: -312px;
+            left: -310px;
             top: 10px;
-            transition: left 1s;
         }
-        #bgm_box:hover
-         {
-            left: -5px;
-            background-position: 310px 10px;
+
+        #bgm_box_show {
+            width: 22px;
+            height: 110px;
+            background-image: url("img/player_bg.png");
+            background-position: -22px 10px;
+            background-repeat: no-repeat;
+            left: 310px;
+            top: 0;
+            position: absolute;
         }
     </style>
 </head>
 <body>
     <div id="bgm_box">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=320 height=500 src="http://music.163.com/outchain/player?type=0&id=75613654&auto=1&height=430"></iframe>
+        <iframe frameborder="0" marginwidth="0" marginheight="0" width=320 height=500 src="http://music.163.com/outchain/player?type=0&id=75613654&auto=1&height=430"></iframe>
+        <a href="#">
+            <div id="bgm_box_show" data="hide"></div>
+        </a>
     </div>
 
     <section class="page-header">
@@ -67,5 +71,21 @@
             </footer>
     </section>
 
+    <script>
+        $(function () {
+            $("#bgm_box_show").click(function () {
+                if ($("#bgm_box_show").attr("data") == "show") {
+                    $("#bgm_box_show").attr("data", "hide")
+                    $("#bgm_box").animate({ left: -310 }, "1");
+                    $("#bgm_box_show").css("background-position-x", "-22px");
+                }
+                else {
+                    $("#bgm_box_show").attr("data", "show")
+                    $("#bgm_box").animate({ left: -5 }, "1");
+                    $("#bgm_box_show").css("background-position-x", "0px");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
