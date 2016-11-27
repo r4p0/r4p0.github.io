@@ -1,0 +1,62 @@
+@charset "utf-8";
+*
+{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+body
+{
+    background: #333;
+    font-family: "微软雅黑";
+    color: #ccc;
+}
+h3
+{
+    text-align: center;
+    margin: 1em;
+    font-size: 30px;
+}
+.button{
+    margin: 5px;
+    color: #ccc;
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.center {
+    text-align: center;
+    margin: 20px;
+}
+.button.selected
+{
+    background: #999;
+    color: #333;
+    cursor: auto;
+}
+.button.b2{
+    width: 318px;
+}
+@media screen and (min-width:767px)
+{
+    video
+    {
+        width : 767px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+}
+@media screen and (max-width:767px)
+{
+    video
+    {
+        width : 100%;
+    }
+}
