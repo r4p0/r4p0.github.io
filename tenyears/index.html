@@ -1,0 +1,10 @@
+---
+layout: catalogue
+title: 目录
+---
+<div id="title">{{ site.sitename }}</div>
+<ul>
+{% for post in site.posts %}
+	<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><span>{{ post.date | date_to_string }}更新</span></li>
+{% endfor %}
+</ul>
