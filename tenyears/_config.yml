@@ -1,4 +1,0 @@
-layouts: ./tenyears/_layouts
-baseurl: ./tenyears
-markdown: kramdown
-sitename: 十年后重返母校
