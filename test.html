@@ -28,13 +28,31 @@
             color: #ccc;
         }
 
-        .block {
+        #block {
             display: none;
         }
 
-        @media screen and (orientation: landscape) and (max-width: 768px) {
+        #block span {
+            position: absolute;
+            width: 157px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-top: -100px;
+            margin-left: -78px;
+            font-size: 14px;
+        }
+
+        #change-tips {
+            width: 157px;
+            height: 157px;
+        }
+
+        @media screen and (orientation: landscape) {
             /*横屏 css*/
-            .block {
+            #block[platform="mobile"] {
                 display: block;
                 position: absolute;
                 top: 0;
@@ -44,18 +62,6 @@
                 z-index: 999;
                 background-color: #666;
                 color: #fff;
-            }
-
-            .block span {
-                position: absolute;
-                width: 100px;
-                height: 50px;
-                left: 50%;
-                top: 50%;
-                line-height: 50px;
-                margin-top: -25px;
-                margin-left: -50px;
-                font-size: 14px;
             }
         }
     </style>
@@ -71,9 +77,42 @@
     <footer>
         尾部模块
     </footer>
-    <div class="block">
-        <span>请旋转屏幕</span>
+    <div id="block">
+        <span>
+            <svg version="1.1" id="change-tips" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 157 157" xml:space="preserve">
+                <g>
+                    <path style="fill:#FFFFFF;" d="M157,93c0-7.7-6.3-14-14-14H14C6.3,79,0,85.3,0,93v50c0,7.7,6.3,14,14,14h129c7.7,0,14-6.3,14-14V93
+                   z M12,126c0,1.1-0.9,2-2,2s-2-0.9-2-2v-18c0-1.1,0.9-2,2-2s2,0.9,2,2V126z M131,149H18V87h113V149z M145,124c-3.9,0-7-3.1-7-7
+                   s3.1-7,7-7s7,3.1,7,7S148.9,124,145,124z" />
+                    <path style="opacity:0.2;fill:#FFFFFF;" d="M157,14c0-7.7-6.3-14-14-14H93c-7.7,0-14,6.3-14,14v129c0,7.7,6.3,14,14,14h50
+                   c7.7,0,14-6.3,14-14V14z M111.3,12c-1.1,0-2-0.9-2-2s0.9-2,2-2h18c1.1,0,2,0.9,2,2s-0.9,2-2,2H111.3z M87,131V18h62v113H87z"
+                    />
+                    <path style="fill:#FFFFFF;" d="M63,30c-14.6,0-26.7,10.8-28.7,24.8l-9.1-0.6l10.7,14l12.5-12.4l-9.2-0.6C41.1,43.7,51,35,63,35
+                   c1.4,0,2.5-1.1,2.5-2.5C65.5,31.1,64.4,30,63,30z" />
+                </g>
+            </svg>请旋转屏幕</span>
     </div>
+    <script>
+        (function () {
+            if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                block.setAttribute("platform", "mobile");
+            }
+
+            var tempOri = 0;
+            var orientationChange = function () {
+                //console.log(window.orientation);
+                if (tempOri != 0 && window.orientation == 0 || window.orientation == 180) {
+                    console.log("location.reload();");
+                    location.reload();
+                }
+                tempOri = window.orientation;
+            }
+
+            window.addEventListener('load', orientationChange);
+            window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+        })();
+    </script>
 </body>
 
 </html>
